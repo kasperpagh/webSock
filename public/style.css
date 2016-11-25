@@ -1,0 +1,12 @@
+.chart {
+    width: 500px;
+    height: 500px;
+}
+.roundBox {
+    border-radius: 3px;
+    border: solid 1px darkgray;
+    box-shadow: 3px 3px black;
+    padding: .5em;
+    min-height: 4em;
+    min-width: 6em;
+}
