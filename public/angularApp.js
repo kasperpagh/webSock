@@ -46,6 +46,24 @@ app.controller("VoteCtrl", function ($scope, mySocket)
         $scope.noText = res.noText;
     });
 
+    $scope.chat =  {};
+
+    $scope.sendMsg = function()
+    {
+        var message =
+            {
+                message: $scope.chat.msg
+            };
+        mySocket.emit("chatMessage", message);
+        var text = document.getElementById("inputField").value = "";
+    };
+
+    mySocket.on("chatUpdate", function(res)
+    {
+        var box = document.getElementById("chatArea");
+        box.value += res + "\n";
+    });
+
     //Do not focus on this part. Its just to set up the charts
     //https://github.com/chinmaymk/angular-charts/
     $scope.config = {
@@ -62,7 +80,7 @@ app.controller("VoteCtrl", function ($scope, mySocket)
 
     $scope.votes = {
         data: [{
-            x: "Series1",
+            x: ["----------YES-----------","-----------NO-----------"],
             y: [0, 0]
         }]
     };

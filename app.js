@@ -5,9 +5,9 @@ var app = express();
 let voting =
     {
         results : [0,0],
-        title : "do you like beer",
-        yesText : "suuuure",
-        noText : "no, i leik mudkips better"
+        title : "DO YOU LIKE LLAMAS?",
+        yesText : "YES",
+        noText : "NOPE"
     }
 
 
@@ -37,6 +37,12 @@ io.on("connection", (socket) =>
         console.log("got a vote");
         vote.value ? voting.results[0]++ : voting.results[1]++;
         io.emit("update", voting.results);
+    });
+
+    socket.on("chatMessage", (msg) =>
+    {
+        console.log("chat runder server, text er: " + msg.message)
+        io.emit("chatUpdate", msg.message);
     });
 
 });

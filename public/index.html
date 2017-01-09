@@ -32,6 +32,13 @@
         <h4>Place your vote</h4>
         <button class="btn btn-success" ng-click="vote(true)">{{yesText}}</button>
         <button class="btn btn-danger" ng-click="vote(false)">{{noText}}</button>
+
+        <div id="chatBox">
+            <textarea id="chatArea" rows="10"></textarea>
+            <input type="text" id="inputField" ng-model="chat.msg">
+            <button ng-click="sendMsg()">SEND</button>
+
+        </div>
     </div>
 </div>
 </body>
